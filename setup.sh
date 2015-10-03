@@ -74,6 +74,7 @@ apps=(
   google-chrome
   firefox
   evernote
+  crashplan
   caffeine
   slack
   skype
@@ -85,6 +86,20 @@ brew cask install --appdir="/Applications" ${apps[@]}
 
 echo "Cleaning up older packages and temporary files"
 brew cleanup && brew cask cleanup
+
+echo "Setting up CrashPlan for headless server operations"
+echo "Stopping locally installed CrashPlan server. This may require administrator password."
+sudo launchctl unload -w /Library/LaunchDaemons/com.crashplan.engine.plist
+ps auxww | grep -i CrashPlanService
+echo "Ensure CrashPlan is not running above."
+echo "Changing CrashPlan UI to point to NAS server."
+sudo sed -i inplace 's/#serviceHost=127.0.0.1/serviceHost=192.168.1.12/' /Applications/CrashPlan.app/Contents/Resources/Java/conf/ui.properties
+echo "Changing CrashPlan Menu Helper App to point to NAS server."
+sudo sed -i inplace 's/127.0.0.1/192.168.1.12/' /Applications/CrashPlan.app/Contents/Helpers/CrashPlan\ menu\ bar.app/Contents/Info.plist
+echo "Updating UI key to allow connection to NAS server. Login to the NAS and perform 'cat /var/lib/crashplan/.ui_info' to get the value."
+sudo rm -f /Library/Application\ Support/CrashPlan/.ui_info
+sudo cp ~/Documents/Dropbox/.ssh/crashplan.ui_info /Library/Application\ Support/CrashPlan/.ui_info
+sudo chmod 644 /Library/Application\ Support/CrashPlan/.ui_info
 
 echo "Installing atom plugins"
 atom_plugins=(

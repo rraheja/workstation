@@ -4,6 +4,9 @@
 # October 2015
 # Usage: Run this and pass the crashplan update number (the long number) as input e.g. curl -Ls <scriptURI> | sh -s <CrashPlanUpdateNumber>.
 
+echo The following upgrades are found:
+ls -l /var/packages/CrashPlan/target/upgrade/*.jar
+
 if $1
 	upgradenum=$1
 else

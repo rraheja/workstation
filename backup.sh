@@ -1,9 +1,9 @@
 #!/bin/bash
 # Backup script - backup location can be passed in as first argument.
-# Rajesh Raheja 08/23/2013
+# Rajesh Raheja
+# October 2015
 
 HOSTNAME=`hostname`
-# BACKUPDIR=${1:-rraheja@rraheja-nas.local:/mnt/Share/Backups/"$HOSTNAME"}
 BACKUPDIR=${1:-/mnt/Share/Backups/"$HOSTNAME"}
 
 exec > >(tee /tmp/backup.log)
@@ -12,13 +12,15 @@ exec 2>&1
 osname=`uname`
 if [[ "$osname" == 'Darwin' ]]; then
 	echo INFO: Executing on a Mac.
+	taropts=""
 elif [[ "$osname" == 'Linux' ]]; then
 	echo Exporting APT keys
 	apt-key exportall > /etc/apt/repo.keys
+	taropts=" --exclude-caches-all --ignore-failed-read "
 fi
 
 echo Archiving files
-tar -cvzf /tmp/backup.tgz --exclude-caches-all --ignore-failed-read -T - << EOF
+tar -cvzf /tmp/backup.tgz $taropts -T - << EOF
 /etc/NetworkManager/NetworkManager.conf
 /etc/apt/
 /etc/exports
@@ -43,15 +45,12 @@ tar -cvzf /tmp/backup.tgz --exclude-caches-all --ignore-failed-read -T - << EOF
 /etc/sudoers.d/
 /etc/modules
 /etc/modprobe.d/
-/home/rraheja/Documents/
-/home/rraheja/.ssh/
-/home/rraheja/.config/
-/home/rraheja/.gnome2/
-/home/rraheja/.linuxmint/
-/home/rraheja/.vnc/
-/home/rraheja/.VirtualBox/
-/Users/rahra01/Documents
+$HOME/.ssh/
+$HOME/.config/
+$HOME/.gnome2/
+$HOME/.linuxmint/
+$HOME/.vnc/
 EOF
 
-sudo -u rraheja scp /tmp/backup.tgz "$BACKUPDIR"
+scp /tmp/backup.tgz "$BACKUPDIR"
 echo Backup complete on `date`.

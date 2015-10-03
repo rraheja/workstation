@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Installing new mac software
+# Installing and upgrading Mac OS X software applications and development tools/utilities.
 # Rajesh Raheja
 # October 2015
 
 # Install Apple X-code command line tools
-echo "Installing X Code command line tools. Accept the agreement on the opened window."
+echo "Installing X Code command line tools. Accept the agreement on the opened window. Ignore error if already installed."
 xcode-select --install
 
 # Install brew if not installed
@@ -12,10 +12,14 @@ echo "Installing brew if not installed"
 if test ! $(which brew); then
   echo "Installing homebrew..."
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  brew update && brew install caskroom/cask/brew-cask
   echo "Uninstall using 'ruby -e \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)\"'"
+else
+  echo HomeBrew already installed in `brew --prefix`
 fi
-   
+
+echo "Updating brew and installing Cask"
+brew update && brew install caskroom/cask/brew-cask
+
 echo "Checking brew"
 brew config
 brew doctor && brew cask doctor
@@ -25,7 +29,7 @@ brew list && brew cask list
 echo "Listing outdated binaries and applications"
 brew outdated
 echo "Upgrading installed software"
-brew update && brew upgrade && brew cleanup && brew cask cleanup
+brew upgrade && brew cleanup && brew cask cleanup
 
 # Install software
 echo "Installing binaries"
@@ -37,9 +41,11 @@ binaries=(
   node
   python
   go
-  pandoc
   packer
   terraform
+  pandoc
+  markdown
+  corkscrew
 )
 
 brew install ${binaries[@]}
@@ -47,32 +53,31 @@ brew install ${binaries[@]}
 echo "Installing applications"
 apps=(
 # Dev tools
+# Virtualbox and Docker require password to be entered hence prioritizing first
+  virtualbox
+  dockertoolbox
   cakebrew
   iterm2
   macvim
   vimr
-  sublime-text3
+  sublime-text
   atom
-  github
-  sourcetree
-  virtualbox
-  vagrant
   otto
   nomad
+  vagrant
+  github-desktop
+  sourcetree
   keka
   cyberduck
 # Productivity tools
   dropbox
   google-chrome
   firefox
+  evernote
+  caffeine
   slack
   skype
   kindle
-  send-to-kindle
-  caffeine
-  remote-desktop-connection
-  pdf-toolbox
-  kodi
   mplayerx
 )
 
@@ -86,7 +91,6 @@ atom_plugins=(
   atom-beautify
   color-picker
   git-history
-  markdown-preview 
   merge-conflicts 
   vim-mode
 )
@@ -95,4 +99,3 @@ apm install ${atom_plugins[@]}
 
 echo Setup complete on `date`.
 exit 0
-

@@ -7,7 +7,7 @@
 echo The following upgrades are found:
 ls -l /var/packages/CrashPlan/target/upgrade/*.jar
 
-if $1
+if [[ ! -z $1 ]] ;
 then
 	upgradenum=$1
 else

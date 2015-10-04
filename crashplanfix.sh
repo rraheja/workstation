@@ -32,5 +32,5 @@ fi
 
 echo Processing folder ${upgradedir}
 mv ${upgradedir}/upgrade.sh ${upgradedir}/upgrade.sh.old 
-echo The contents of /var/lib/crashplan/.ui_info file: `cat /var/lib/crashplan/.ui_info  ; echo`
+echo The contents of /var/lib/crashplan/.ui_info file: `cat /var/lib/crashplan/.ui_info ; echo`
 echo Restart CrashPlan service and check logs.

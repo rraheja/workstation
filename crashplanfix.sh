@@ -26,7 +26,7 @@ echo Folders to process: `echo $upgradedirlist | wc -l`
 for upgradedir in $upgradedirlist ;
 do
 	echo Processing folder ${upgradedir}
-	mv ${upgradedir}/upgrade.sh ${upgradedir}/upgrade.sh.old 
+	mv ${upgradedir}upgrade.sh ${upgradedir}upgrade.sh.old 
 done
 	
 echo The contents of /var/lib/crashplan/.ui_info file: `cat /var/lib/crashplan/.ui_info ; echo`

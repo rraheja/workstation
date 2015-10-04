@@ -21,7 +21,8 @@ unzip -o /var/packages/CrashPlan/target/upgrade/${upgradenum}.jar "*.jar" -d /va
 unzip -o /var/packages/CrashPlan/target/upgrade/${upgradenum}.jar "lang/*" -d /var/packages/CrashPlan/target/
 
 upgradedirs=`ls -ld /var/packages/CrashPlan/target/upgrade/${upgradenum}.*/ | wc -l`
-if [ $upgradedirs > 1 ];
+echo Folders to process: $upgradedirs
+if [ "$upgradedirs" -gt 1 ];
 then
 	echo More than one upgrade directory found. In that case, simply rename upgrade.sh to upgrade.sh.old in each of those directories.
 	echo "mv <dir>/upgrade.sh <dir>/upgrade.sh.old 

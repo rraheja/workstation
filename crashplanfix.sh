@@ -2,16 +2,11 @@
 # CrashPlan fix for Synology package upgrades that keep breaking and stopping CrashPlan
 # Rajesh Raheja
 # October 2015
-# Usage: Run this and pass the crashplan update number (the long number) as input e.g. curl -Ls <scriptURI> | sh -s <CrashPlanUpdateNumber>.
+# Usage: Run this and pass the crashplan update number (the long number) as input e.g. curl -Ls <scriptURI> | sh
 
-if [ -z "$1" ]; 
-then
-	upgradenum = $1
-else
-	echo The following upgrades are found:
-	ls -l /var/packages/CrashPlan/target/upgrade/*.jar
-	read -p "Enter CrashPlan Upgrade Number to process:" upgradenum
-fi
+echo The following upgrades are found:
+ls -l /var/packages/CrashPlan/target/upgrade/*.jar
+read -p "Enter CrashPlan Upgrade Number to process:" upgradenum
 
 if [ -z "$upgradenum" ];
 then

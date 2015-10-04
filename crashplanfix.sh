@@ -25,8 +25,7 @@ upgradedir=`ls -d /var/packages/CrashPlan/target/upgrade/${upgradenum}.*/`
 echo Folders to process: $upgradedirs
 if [ "${upgradedirs}" -gt 1 ];
 then
-	echo More than one upgrade directory found. In that case, simply rename upgrade.sh to upgrade.sh.old in each of those directories.
-	echo "mv <dir>/upgrade.sh <dir>/upgrade.sh.old 
+	echo "More than one upgrade directory. Manually fix files using: mv <dir>/upgrade.sh <dir>/upgrade.sh.old"
 	echo ${upgradedir}
 	exit 1;
 fi

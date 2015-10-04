@@ -12,7 +12,8 @@ then
 	echo "No CrashPlan Upgrade Number provided"
 	exit 1;
 else
-	upgradenum = $1
+	upgradenum="$1"
+	echo "Processing upgrade $upgradenum"
 fi
 
 unzip -o /var/packages/CrashPlan/target/upgrade/${upgradenum}.jar "*.jar" -d /var/packages/CrashPlan/target/lib/

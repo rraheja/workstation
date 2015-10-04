@@ -21,17 +21,17 @@ unzip -o /var/packages/CrashPlan/target/upgrade/${upgradenum}.jar "*.jar" -d /va
 unzip -o /var/packages/CrashPlan/target/upgrade/${upgradenum}.jar "lang/*" -d /var/packages/CrashPlan/target/
 
 upgradedirs=`ls -ld /var/packages/CrashPlan/target/upgrade/${upgradenum}.*/ | wc -l`
+upgradedir=`ls -d /var/packages/CrashPlan/target/upgrade/${upgradenum}.*/`
 echo Folders to process: $upgradedirs
-if [ "$upgradedirs" -gt 1 ];
+if [ "${upgradedirs}" -gt 1 ];
 then
 	echo More than one upgrade directory found. In that case, simply rename upgrade.sh to upgrade.sh.old in each of those directories.
 	echo "mv <dir>/upgrade.sh <dir>/upgrade.sh.old 
-	echo $upgradedirs
+	echo ${upgradedir}
 	exit 1;
 fi
 
-upgradedir=`ls -d /var/packages/CrashPlan/target/upgrade/${upgradenum}.*/`
-echo Processing folder $upgradedir
+echo Processing folder ${upgradedir}
 mv ${upgradedir}/upgrade.sh ${upgradedir}/upgrade.sh.old 
 echo The contents of /var/lib/crashplan/.ui_info file: `cat /var/lib/crashplan/.ui_info  ; echo`
 echo Restart CrashPlan service and check logs.

@@ -7,11 +7,17 @@
 echo The following upgrades are found:
 ls -l /var/packages/CrashPlan/target/upgrade/*.jar
 
-if [[ -n "$1" ]] ;
+if [ $# -eq 0 ];
 then
 	upgradenum=$1
 else
 	read -p "Enter CrashPlan Upgrade Number: " upgradenum
+fi
+
+if [ ${upgradenum} == "" ];
+then
+	echo "No CrashPlan Upgrade Number provided"
+	exit 1;
 fi
 
 unzip -o /var/packages/CrashPlan/target/upgrade/${upgradenum}.jar "*.jar" -d /var/packages/CrashPlan/target/lib/
@@ -20,5 +26,5 @@ upgradedir=`ls -d /var/packages/CrashPlan/target/upgrade/${upgradenum}.*/`
 echo The following is the upgrade directory found. If more than one found, the script will fail. In that case, simply rename upgrade.sh to upgrade.sh.old in each of those directories.
 echo $upgradedir
 mv ${upgradedir}/upgrade.sh ${upgradedir}/upgrade.sh.old 
-echo .ui_info contents: `cat /var/lib/crashplan/.ui_info  ; echo`
+echo The contents of /var/lib/crashplan/.ui_info file: `cat /var/lib/crashplan/.ui_info  ; echo`
 echo Restart CrashPlan service and check logs.

@@ -7,14 +7,14 @@
 echo The following upgrades are found:
 ls -l /var/packages/CrashPlan/target/upgrade/*.jar
 
-if [ $# -eq 0 ];
+if [ -z "$1" ];
 then
 	upgradenum=$1
 else
-	read -p "Enter CrashPlan Upgrade Number: " upgradenum
+	read -p "Enter CrashPlan Upgrade Number to process: " upgradenum
 fi
 
-if [ ${upgradenum} == "" ];
+if [ -z "$upgradenum" ];
 then
 	echo "No CrashPlan Upgrade Number provided"
 	exit 1;

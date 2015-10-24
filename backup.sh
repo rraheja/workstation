@@ -53,4 +53,7 @@ $HOME/.vnc/
 EOF
 
 scp /tmp/backup.tgz "$BACKUPDIR"
+
+# rsync -av ~ /Volumes/ARCHIVE --exclude=".Trash" --exclude="Library/Caches" --exclude="Library/Logs" --exclude=".sh_history" --progress | grep -v "/$"
+
 echo Backup complete on `date`.

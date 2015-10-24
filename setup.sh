@@ -41,8 +41,6 @@ binaries=(
   node
   python
   go
-  packer
-  terraform
   pandoc
   markdown
   corkscrew
@@ -60,11 +58,9 @@ apps=(
   iterm2
   macvim
   vimr
+  vim
   sublime-text
   atom
-  otto
-  nomad
-  vagrant
   github-desktop
   sourcetree
   keka

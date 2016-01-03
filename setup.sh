@@ -70,7 +70,7 @@ apps=(
   google-chrome
   firefox
   evernote
-#  crashplan -- version in brew is 4.3.0 which is incompatible with server 4.4.1
+  crashplan
   caffeine
   slack
   skype

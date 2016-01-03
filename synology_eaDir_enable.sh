@@ -5,10 +5,5 @@
 # Usage: run as root
 
 echo Enabling the thumbnail generation services
-
-cd /usr/syno/etc.defaults/rc.d/
-chmod 655 S66fileindexd.sh S66synoindexd.sh S77synomkthumbd.sh S88synomkflvd.sh S99iTunes.sh
-S66synoindexd.sh start
-S77synomkthumbd.sh start
-S88synomkflvd.sh start
-S99iTunes.sh start
+synoservicecfg --start synomkthumbd
+synoservicecfg --list | grep synomkthumbd

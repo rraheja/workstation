@@ -68,6 +68,7 @@ apps=(
 # Productivity tools
   dropbox
   google-chrome
+  google-drive
   firefox
   evernote
   crashplan

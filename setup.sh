@@ -12,24 +12,23 @@ echo "Installing brew if not installed"
 if test ! $(which brew); then
   echo "Installing homebrew..."
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  echo "Uninstall using 'ruby -e \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)\"'"
+
+  echo "Uninstall using \'ruby -e \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)\"\'"
 else
   echo HomeBrew already installed in `brew --prefix`
 fi
 
-echo "Updating brew and installing Cask"
-brew update && brew install caskroom/cask/brew-cask
-
-echo "Checking brew"
+echo "Running brew config..."
 brew config
+echo "Running brew doctor..."
 brew doctor && brew cask doctor
 echo "In case of permission errors, run 'sudo chown $(whoami):admin /usr/local && sudo chown -R $(whoami):admin /usr/local'"
 echo "Listing installed binaries and applications"
 brew list && brew cask list
 echo "Listing outdated binaries and applications"
 brew outdated
-echo "Upgrading installed software"
-brew upgrade && brew cleanup && brew cask cleanup
+echo "Upgrading brew and installed software"
+brew update && brew upgrade && brew cleanup
 
 # Install software
 echo "Installing binaries"
@@ -38,6 +37,7 @@ binaries=(
   wget
   git
   bash-completion
+  vim
   node
   python
 #  pandoc
@@ -51,13 +51,12 @@ echo "Installing applications"
 apps=(
 # Dev tools
 # Virtualbox and Docker require password to be entered hence prioritizing first
-#  virtualbox
-#  dockertoolbox
+  docker
+  virtualbox
   cakebrew
   iterm2
   macvim
   vimr
-  vim
   atom
   github-desktop
   keka
@@ -71,7 +70,7 @@ apps=(
 brew cask install --appdir="/Applications" ${apps[@]}
 
 echo "Cleaning up older packages and temporary files"
-brew cleanup && brew cask cleanup
+brew cleanup
 
 echo "Installing atom plugins"
 atom_plugins=(

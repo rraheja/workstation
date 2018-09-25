@@ -40,32 +40,42 @@ binaries=(
   vim
   node
   python
-#  pandoc
-#  markdown
-#  corkscrew
 )
 
 brew install ${binaries[@]}
 
 echo "Installing applications"
 apps=(
-# Dev tools
-# Virtualbox and Docker require password to be entered hence prioritizing first
+# Programming - Docker and Virtualbox require password hence prioritizing 
   docker
   virtualbox
   vagrant
-  cakebrew
   iterm2
   macvim
   vimr
   atom
   github-desktop
+  pycharm-ce
+# Productivity
+  cakebrew
+  send-anywhere
+  send-to-kindle
   keka
   filezilla
-  google-chrome
-  google-drive
+  franz
   keepingyouawake
   kindle
+  adobe-acrobat-reader
+  google-backup-and-sync
+  google-nik-collection
+  camtasia
+  cisco-proximity
+  copyclip
+  vlc
+  xmind
+  wordpresscom
+  zoomus
+  zoomus-outlook-plugin
 )
 
 brew cask install --appdir="/Applications" ${apps[@]}

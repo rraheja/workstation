@@ -53,7 +53,7 @@ apps=(
   macvim
   vimr
   atom
-  github-desktop
+  github
   pycharm-ce
 # Productivity
   cakebrew

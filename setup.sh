@@ -53,6 +53,7 @@ apps=(
 # Virtualbox and Docker require password to be entered hence prioritizing first
   docker
   virtualbox
+  vagrant
   cakebrew
   iterm2
   macvim

@@ -21,7 +21,7 @@ fi
 echo "Running brew config..."
 brew config
 echo "Running brew doctor..."
-brew doctor && brew cask doctor
+brew doctor && brew cask doctor && brew prune
 echo "In case of permission errors, run 'sudo chown $(whoami):admin /usr/local && sudo chown -R $(whoami):admin /usr/local'"
 echo "Listing installed binaries and applications"
 brew list && brew cask list

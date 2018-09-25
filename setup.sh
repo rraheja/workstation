@@ -67,7 +67,6 @@ apps=(
   adobe-acrobat-reader
   google-backup-and-sync
   google-nik-collection
-  camtasia
   cisco-proximity
   vlc
   xmind

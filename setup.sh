@@ -50,7 +50,6 @@ apps=(
   docker
   virtualbox
   vagrant
-  iterm2
   macvim
   vimr
   atom
@@ -70,7 +69,6 @@ apps=(
   google-nik-collection
   camtasia
   cisco-proximity
-  copyclip
   vlc
   xmind
   wordpresscom

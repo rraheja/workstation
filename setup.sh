@@ -72,8 +72,6 @@ apps=(
   vlc
   xmind
   wordpresscom
-  zoomus
-  zoomus-outlook-plugin
 )
 
 brew cask install --appdir="/Applications" ${apps[@]}

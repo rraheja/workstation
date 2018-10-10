@@ -47,8 +47,8 @@ brew install ${binaries[@]}
 echo "Installing applications"
 apps=(
 # Programming - Docker and Virtualbox require password hence prioritizing 
-  docker
   virtualbox
+  docker
   vagrant
   macvim
   vimr
@@ -56,6 +56,10 @@ apps=(
   github
   pycharm-ce
 # Productivity
+  google-chrome
+  google-backup-and-sync
+  google-nik-collection
+  onedrive
   cakebrew
   send-anywhere
   send-to-kindle
@@ -65,9 +69,6 @@ apps=(
   keepingyouawake
   kindle
   adobe-acrobat-reader
-  google-backup-and-sync
-  google-nik-collection
-  cisco-proximity
   vlc
   xmind
   wordpresscom

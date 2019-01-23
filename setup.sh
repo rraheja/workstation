@@ -47,7 +47,9 @@ brew install ${binaries[@]}
 
 echo "Installing applications"
 apps=(
-# Programming - Docker and Virtualbox require password hence prioritizing 
+# Programming - OneDrive, Docker, Virtualbox require password hence prioritizing 
+  onedrive
+  google-chrome
   virtualbox
   docker
   vagrant
@@ -57,15 +59,13 @@ apps=(
   github
   pycharm-ce
 # Productivity
-  google-chrome
   google-backup-and-sync
   google-nik-collection
-  onedrive
   cakebrew
   send-anywhere
   send-to-kindle
   keka
-  filezilla
+#  filezilla - cask not found error
   franz
   keepingyouawake
   kindle

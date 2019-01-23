@@ -40,6 +40,7 @@ binaries=(
   vim
   node
   python
+  jupyter
 )
 
 brew install ${binaries[@]}
@@ -69,9 +70,7 @@ apps=(
   keepingyouawake
   kindle
   adobe-acrobat-reader
-  vlc
   xmind
-  wordpresscom
 )
 
 brew cask install --appdir="/Applications" ${apps[@]}

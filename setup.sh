@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Installing and upgrading Mac OS X software applications and development tools/utilities.
 # Rajesh Raheja
-# September 2018
+# July 2019
 
 # Install Apple X-code command line tools
 echo "Installing X Code command line tools. Accept the agreement on the opened window. Ignore error if already installed."
@@ -47,29 +47,18 @@ brew install ${binaries[@]}
 
 echo "Installing applications"
 apps=(
-# Programming - OneDrive, Docker, Virtualbox require password hence prioritizing 
-  onedrive
-  google-chrome
-  virtualbox
-  docker
   vagrant
   macvim
   vimr
-  atom
-  github
   pycharm-ce
-# Productivity
   google-backup-and-sync
-  google-nik-collection
   cakebrew
-  send-anywhere
+  cyberduck
   send-to-kindle
   keka
-#  filezilla - cask not found error
   franz
   keepingyouawake
   kindle
-  adobe-acrobat-reader
   xmind
 )
 
@@ -78,16 +67,7 @@ brew cask install --appdir="/Applications" ${apps[@]}
 echo "Cleaning up older packages and temporary files"
 brew cleanup
 
-echo "Installing atom plugins"
-atom_plugins=(
-  atom-beautify
-  color-picker
-  git-history
-  merge-conflicts 
-  vim-mode
-)
-
-apm install ${atom_plugins[@]}
+# apm install ${atom_plugins[@]}
 
 echo Setup complete on `date`.
 exit 0

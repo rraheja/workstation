@@ -51,12 +51,12 @@ apps=(
   macvim
   vimr
   pycharm-ce
+  intellij-idea-ce
   google-backup-and-sync
   cakebrew
   cyberduck
   send-to-kindle
   keka
-  franz
   keepingyouawake
   kindle
   xmind

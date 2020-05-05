@@ -48,13 +48,14 @@ brew install ${binaries[@]}
 echo "Installing applications"
 apps=(
   vagrant
+  docker
+  kitematic
   macvim
   vimr
   pycharm-ce
   intellij-idea-ce
   google-backup-and-sync
   cakebrew
-  cyberduck
   send-to-kindle
   keka
   keepingyouawake

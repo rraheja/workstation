@@ -55,6 +55,7 @@ apps=(
   pycharm-ce
   intellij-idea-ce
   google-backup-and-sync
+  photosync
   cakebrew
   send-to-kindle
   keka
